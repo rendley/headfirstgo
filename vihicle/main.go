@@ -35,13 +35,18 @@ func (t Truck) LoadCargo(cargo string) {
 	fmt.Println("Loading", cargo)
 }
 
-func main() {
-	var vihicle Vihicle = Car("Toyota Yarvic")
-	vihicle.Accelerate()
-	vihicle.Steer("left")
-	vihicle.Brake()
+func TryVehicle(vehicle Vihicle) {
+	vehicle.Accelerate()
+	vehicle.Steer("left")
+	vehicle.Steer("right")
+	vehicle.Brake()
+	truck, ok := vehicle.(Truck)
+	if ok {
+		truck.LoadCargo("format cargo")
+	}
+}
 
-	vihicle = Truck("Ford F180")
-	vihicle.Brake()
-	vihicle.Accelerate()
+func main() {
+	TryVehicle(Truck("Fnord F180"))
+	TryVehicle(Car("Toyota"))
 }

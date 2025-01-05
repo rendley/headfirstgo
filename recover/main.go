@@ -9,7 +9,6 @@ func calmDown() {
 func freakOut() {
 	defer calmDown()
 	panic("oh no")
-	fmt.Println("I won't be run!")
 }
 
 func main() {
